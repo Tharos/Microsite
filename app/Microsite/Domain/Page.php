@@ -22,8 +22,14 @@ use Microsite\LeanMapper\Entity;
 class Page extends Entity
 {
 
+	/** @var Content[] */
 	private $contentsIndex;
 
+
+	/**
+	 * @param string $code
+	 * @return Content
+	 */
 	public function getContent($code)
 	{
 		if ($this->contentsIndex === null) {
