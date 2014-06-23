@@ -12,19 +12,9 @@ use LeanMapper\Row;
 class Mapper extends DefaultMapper
 {
 
+	/** @var string */
 	protected $defaultEntityNamespace = 'Microsite\Domain';
 
-	/** @var ImplicitFiltersProvider */
-	private $implicitFiltersProvider;
-
-
-	/**
-	 * @param ImplicitFiltersProvider $implicitFiltersProvider
-	 */
-	public function __construct(ImplicitFiltersProvider $implicitFiltersProvider)
-	{
-		$this->implicitFiltersProvider = $implicitFiltersProvider;
-	}
 
 	/*
 	 * @inheritdoc
@@ -72,7 +62,7 @@ class Mapper extends DefaultMapper
 	 */
 	public function getImplicitFilters($entityClass, Caller $caller = null)
 	{
-		return $this->implicitFiltersProvider->getImplicitFilters($this, $entityClass, $caller);
+		return [];
 	}
 
 	/*
