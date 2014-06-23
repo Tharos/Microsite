@@ -1,0 +1,15 @@
+{extends @layout.latte}
+
+{block #navigation}<hr class="colored">{/block}
+
+{block #content}
+<div class="l-fixedWidth">
+    <div class="admin">
+        <p class="admin-title">Správa webu {control navigation:siteName}
+            {if $user->isLoggedIn()}<span class="admin-signOut">(<a n:href="Admin:signOut">odhlásit se</a>)</span>{/if}
+        </p>
+        <div class="admin-inner">
+            {include #adminContent}
+        </div>
+    </div>
+</div>

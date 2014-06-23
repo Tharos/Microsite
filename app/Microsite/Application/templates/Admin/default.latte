@@ -1,0 +1,9 @@
+{extends ../@admin.latte}
+
+{block #adminContent}
+<p>Vyberte stránku, jejíž obsahy chcete upravit:</p>
+<ul class="pages">
+    <li n:foreach="$pages as $page">
+        <a n:href="update $page->id">{$page->name}</a>
+    </li>
+</ul>

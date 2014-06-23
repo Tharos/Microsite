@@ -1,0 +1,9 @@
+parameters:
+
+	siteName: Microsite
+
+	dibi:
+		host: localhost
+		username: root
+		password:
+		database: microsite

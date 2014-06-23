@@ -1,0 +1,11 @@
+{extends ../@admin.latte}
+
+{block #adminContent}
+
+<h1>{$updatedPage->name}</h1>
+
+<div n:class="flash, 'flash-' . $flash->type" n:foreach="$flashes as $flash">{$flash->message}</div>
+
+<p><a n:href="default">&larr; Zpět na přehled stránek</a></p>
+
+{control contentsForm}

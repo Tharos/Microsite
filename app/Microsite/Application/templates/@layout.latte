@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{control navigation:title}</title>
+	{control navigation:metaDescriptionElement}
+    <link rel="stylesheet" href="{$basePath}/css/default.css"/>
+    <link rel="stylesheet" href="{$basePath}/css/default-{$langId}.css"/>
+</head>
+<body>
+
+    <div id="header">
+        <div class="l-fixedWidth">
+            <div class="siteLogo">
+                <a href="{control navigation:homepagelink}">
+                    <img src="http://placehold.it/249x88/eeeeee/666666&text=Microsite" alt="Microsite" width="249" height="88">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {block #navigation}
+	    <div id="navigation" class="navigation">
+	        <div class="l-fixedWidth">
+	            {control navigation:menu}
+	        </div>
+	    </div>
+    {/block}
+
+    <div id="body">
+        {include #content}
+    </div>
+
+    <div id="footer">
+        <div class="l-fixedWidth">
+            <p>
+                <img class="smallLogo" src="http://placehold.it/61x18/ffffff/666666&text=Microsite" alt="Microsite" width="61" height="18">
+                Copyright &copy; 2014 <a href="https://github.com/Tharos/">Tharos</a>
+	            | See <a href="https://github.com/Tharos/microsite">source code of this microsite</a>!
+            </p>
+	        <div class="footerNav">
+                {control navigation:menuWithoutHomepage}
+	        </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{$basePath}/js/netteForms.js"></script>
+</body>
+</html>

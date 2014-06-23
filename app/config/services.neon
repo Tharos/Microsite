@@ -1,0 +1,23 @@
+services:
+	- Microsite\Routing\RouterFactory
+	router: @Microsite\Routing\RouterFactory::createRouter
+
+	- LeanMapper\DefaultEntityFactory
+	- Microsite\LeanMapper\ImplicitFiltersProvider
+	- Microsite\LeanMapper\MappingHelper
+	- Microsite\LeanMapper\Mapper
+
+	- LeanQuery\Hydrator
+	- LeanQuery\QueryHelper
+	- LeanQuery\DomainQueryFactory
+
+	- Microsite\Application\AdminPresenter
+	- Microsite\Application\PagePresenter
+	- Microsite\Application\SignPresenter
+	- Microsite\Application\ErrorPresenter
+
+	- Microsite\Auth\Authenticator
+	- Microsite\Auth\ISignFormFactory
+	- Microsite\Domain\ContentRepository
+	- Microsite\Domain\ContentsFormFactory
+	- Microsite\Navigation\NavigationFactory(%siteName%)

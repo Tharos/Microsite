@@ -1,0 +1,7 @@
+<ul>
+	<li
+        n:foreach="$pages as $page" n:class="(isset($currentPage) and $page->equals($currentPage)) ? is-active"
+        n:if="$page->visibleInMenu and (!$page->homepage or $includeHomepage)">
+		<a href="{plink Page: page => $page}">{$page->name}</a>
+	</li>
+</ul>

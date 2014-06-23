@@ -1,0 +1,29 @@
+php:
+	date.timezone: Europe/Prague
+
+nette:
+	application:
+		errorPresenter: Error
+		mapping:
+			*: Microsite\Application\*Presenter
+
+	session:
+		expiration: 14 days
+
+	forms:
+		messages:
+			FILLED: "%label je vstup, který musíte vyplňit"
+
+leanMapper:
+	host: %dibi.host%
+	username: %dibi.username%
+	password: %dibi.password%
+	database: %dibi.database%
+	driver: mysqli
+
+includes:
+	- parameters.neon
+	- services.neon
+
+extensions:
+    leanMapper: Microsite\LeanMapper\DI\LeanMapperExtension

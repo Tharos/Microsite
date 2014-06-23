@@ -1,0 +1,9 @@
+{extends @columns.latte}
+
+{block #col1}
+    {$currentPage->getContent(main)->html|noescape}
+{/block}
+
+{block #col2}
+	{$currentPage->getContent(secondary)->html|noescape}
+{/block}

@@ -1,0 +1,313 @@
+/* html5doctor.com Reset v1.6.1 (http://html5doctor.com/html-5-reset-stylesheet/) - http://cssreset.com */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent
+}
+body {
+	line-height: 1
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block
+}
+nav ul {
+	list-style: none
+}
+blockquote, q {
+	quotes: none
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: none
+}
+a {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent
+}
+ins {
+	background-color: #ff9;
+	color: #000;
+	text-decoration: none
+}
+mark {
+	background-color: #ff9;
+	color: #000;
+	font-style: italic;
+	font-weight: bold
+}
+del {
+	text-decoration: line-through
+}
+abbr[title], dfn[title] {
+	border-bottom: 1px dotted;
+	cursor: help
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0
+}
+input, select {
+	vertical-align: middle
+}
+
+/* clearfix */
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+*:first-child + html .clearfix {
+	zoom: 1;
+}
+.cleaner {
+	clear: both;
+	font-size: 0;
+	height: 0;
+}
+
+/* front styles */
+body {
+	font: 16px/23px 'Open Sans', sans-serif;
+	color: #888;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: #358000;
+	line-height: 34px;
+	margin: 0;
+	padding-top: 13px;
+	padding-bottom: 21px;
+}
+h1 {
+	font-size: 30px;
+}
+h2 {
+	font-size: 24px;
+}
+h3 {
+	font-size: 20px;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	color: #358000;
+}
+a {
+	color: #b05f00;
+}
+a:hover {
+	color: #d27f1e;
+}
+p, ul, ol, table, blockquote {
+	margin-bottom: 23px;
+}
+blockquote {
+	font-style: italic;
+}
+ul {
+	margin: 0;
+	padding-left: 40px;
+}
+ul ul {
+	margin-bottom: 0;
+}
+ol li {
+	margin-bottom: 23px;
+	margin-left: 30px;
+	padding-left: 5px
+}
+form table {
+	margin-bottom: 30px;
+}
+form td, form td {
+	padding: 3px;
+}
+form th {
+	text-align: left;
+}
+form label {
+	margin-right: 10px;
+	color: #666;
+}
+form .error {
+	list-style-type: none;
+	margin: 0;
+	color: red;
+}
+form .error li {
+	margin-bottom: 14px;
+}
+form textarea {
+	width: 785px;
+}
+.l-fixedWidth {
+	width: 825px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+.l-hpCol {
+	width: 400px;
+	padding: 30px 0 40px;
+}
+.l-mainCol {
+	padding: 30px 0 40px;
+}
+.l-cols > div {
+	float: left;
+	padding: 30px 0 40px;
+}
+.l-cols .l-col1 {
+	width: 450px;
+	margin-right: 90px;
+}
+.l-cols .l-col2 {
+	width: 285px;
+}
+#header {
+	height: 168px;
+}
+#header, #navigation, #body, #footer {
+	position: relative;
+}
+#header .siteLogo {
+	position: absolute;
+	top: 50px;
+}
+#body {
+	min-height: 400px;
+}
+#footer {
+	height: 32px;
+	line-height: 32px;
+	color: white;
+	font-size: 11px;
+	background: #aaa;
+}
+#footer p {
+	float: left;
+	margin-bottom: 0;
+}
+#footer a {
+	color: white;
+}
+.navigation {
+	height: 35px;
+	background: #358000;
+	font-size: 12px;
+	text-transform: uppercase;
+	min-width: 825px;
+}
+.navigation ul {
+	padding-left: 0;
+}
+.navigation li {
+	float: left;
+	list-style-type: none;
+}
+.navigation li.is-active a {
+	color: white;
+	font-weight: bold;
+}
+.navigation a {
+	line-height: 12px;
+	display: block;
+	margin-top: 11px;
+	padding: 0 20px;
+	color: #e6efd5;
+	text-decoration: none;
+	border-left: 1px solid white;
+}
+.navigation a:hover {
+	height: 35px;
+	line-height: 35px;
+	margin-top: 0;
+	border-right: 1px solid white;
+	margin-right: -1px;
+	color: white;
+}
+.footerNav a {
+	padding: 0 10px;
+	border-left: 1px solid white;
+}
+.footerNav a:hover {
+	background: #8a8b8e;
+}
+.footerNav ul {
+	float: right;
+	margin-left: 0;
+}
+.footerNav li {
+	float: left;
+	list-style-type: none;
+}
+.footerNav li:last-child a {
+	border-right: 1px solid white;
+}
+#footer .smallLogo {
+	position: relative;
+	vertical-align: middle;
+	margin-right: 15px;
+}
+.prologue {
+	height: 200px;
+	background: #eee;
+}
+hr.colored {
+	margin: 0;
+	border: none;
+	border-top: 1px solid #358000;
+}
+.errorPage {
+	width: 600px;
+	margin: 60px auto;
+}
+
+/* admin styles */
+.admin {
+	padding: 10px 0 1px;
+	min-height: 450px;
+}
+.admin-title {
+	color: #f66;
+	font-weight: bold;
+	text-align: center;
+}
+.admin-signOut {
+	margin-left: 5px;
+}
+.admin-signOut a {
+	color: #f66;
+}
+.admin-inner {
+	margin: 20px 20px 10px;
+}
+.pages {
+	list-style-type: none;
+	font-size: 16px;
+}
+.flash {
+	padding: 5px 10px;
+	margin: 0 0 14px;
+	border: 1px solid #aaa;
+	background: #fafafa;
+}
+.flash-success {
+	background: #ecf4de;
+	border-color: #77a02e;
+	color: #57791a;
+}

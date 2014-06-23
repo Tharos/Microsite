@@ -1,0 +1,13 @@
+{block #content}
+
+<div class="prologue clearfix">
+	<div class="l-fixedWidth">
+		<img src="http://placehold.it/825x200/eeeeee/aaaaaa" alt="Product" width="825" height="200">
+	</div>
+</div>
+
+<div class="l-fixedWidth">
+    <div class="l-hpCol">
+        {$currentPage->getContent(main)->html|noescape}
+    </div>
+</div>

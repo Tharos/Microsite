@@ -1,0 +1,13 @@
+{if !empty($contents)}
+	{form form}
+		<ul n:if="$form->hasErrors()">
+		    <li n:foreach="$form->errors as $error">{$error}</li>
+		</ul>
+		<table>
+		    <tr n:foreach="$contents as $content">
+		        <td>{input c$content->id rows => 20}</td>
+		    </tr>
+		    <tr><td>{input submit}</td></tr>
+		</table>
+	{/form}
+{/if}
