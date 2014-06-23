@@ -1,7 +1,7 @@
 Microsite example
 =================
 
-This repository contains an example of very simple web application based on [Nette Framework](http://nette.org), [Lean Mapper](https://github.com/Tharos/LeanMapper) and Lean [Query libraries](https://github.com/Tharos/LeanQuery).
+This repository contains an example of very simple web application based on [Nette Framework](http://nette.org), [Lean Mapper](https://github.com/Tharos/LeanMapper) and [Lean Query](https://github.com/Tharos/LeanQuery) libraries.
 It is meant to be used mainly for study purposes.
 
 -------
