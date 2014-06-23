@@ -76,7 +76,8 @@ class Navigation extends Control
 	public function renderMetaDescriptionElement()
 	{
 		if (isset($this->currentPage->description)) {
-			echo '<meta name="description" content="' . $this->currentPage->description . '">';
+			$this->template->description = $this->currentPage->description;
+			$this->template->render(__DIR__ . '/description.latte');
 		}
 	}
 
