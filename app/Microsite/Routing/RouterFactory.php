@@ -2,24 +2,26 @@
 
 namespace Microsite\Routing;
 
-use LeanQuery\DomainQueryFactory;
 use Nette\Application\IRouter;
 use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
 
+/**
+ * @author Vojtěch Kohout
+ */
 class RouterFactory
 {
 
-	/** @var DomainQueryFactory */
-	private $domainQueryFactory;
+	/** @var IDatabaseRouterFactory */
+	private $databaseRouterFactory;
 
 
 	/**
-	 * @param DomainQueryFactory $domainQueryFactory
+	 * @param IDatabaseRouterFactory $databaseRouterFactory
 	 */
-	public function __construct(DomainQueryFactory $domainQueryFactory)
+	public function __construct(IDatabaseRouterFactory $databaseRouterFactory)
 	{
-		$this->domainQueryFactory = $domainQueryFactory;
+		$this->databaseRouterFactory = $databaseRouterFactory;
 	}
 
 	/**
@@ -30,7 +32,7 @@ class RouterFactory
 		$router = new RouteList;
 
 		$router[] = new Route('<lang cz|en>/<presenter admin|sign>[/<action=default>[/<id>]]');
-		$router[] = new DatabaseRouter($this->domainQueryFactory);
+		$router[] = $this->databaseRouterFactory->create();
 
 		return $router;
 	}

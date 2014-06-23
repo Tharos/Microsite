@@ -1,4 +1,5 @@
 services:
+	- Microsite\Routing\IDatabaseRouterFactory
 	- Microsite\Routing\RouterFactory
 	router: @Microsite\Routing\RouterFactory::createRouter
 
