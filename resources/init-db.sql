@@ -74,4 +74,4 @@ CREATE TABLE `user` (
 
 TRUNCATE `user`;
 INSERT INTO `user` (`user_id`, `username`, `password`) VALUES
-(1,	'admin',	'$2y$10$sQp3SRbUBdrkxe1WtYbaJ.TruxZjjWgtdyAxjbGnYr68Ty4SDnaAu');
+(1,	'admin',	'$2y$10$cx8ritIo8hAh0S54cuaou.HRarWPXU1xeyoHZ.v674ZmMfIt2dw5e');
