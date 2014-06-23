@@ -4,10 +4,9 @@ namespace Microsite\Application;
 
 use Exception;
 use Nette\Application\BadRequestException;
-use Nette\Application\UI\Presenter;
 use Tracy\Debugger;
 
-class ErrorPresenter extends Presenter
+class ErrorPresenter extends \Nette\Application\UI\Presenter
 {
 
 	/**
