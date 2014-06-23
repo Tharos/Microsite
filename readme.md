@@ -17,12 +17,12 @@ In order to get the application running please:
 
 And that's all. Now you can use following "entry points":
 
-/--
+```
 http://localhost/<pathToApplication>/www/cz - Czech version of the microsite
 http://localhost/<pathToApplication>/www/en - English version of the microsite
 http://localhost/<pathToApplication>/www/cz/admin - Main contents management of the Czech version
 http://localhost/<pathToApplication>/www/en/admin - Main contents management of the English version
-\--
+```
 
 In admin you can use username `admin` and password `heslo`.
 
