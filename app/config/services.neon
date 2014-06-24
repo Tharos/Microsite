@@ -1,4 +1,5 @@
 services:
+
 	- Microsite\Routing\IDatabaseRouterFactory
 	- Microsite\Routing\RouterFactory
 	router: @Microsite\Routing\RouterFactory::createRouter
@@ -18,8 +19,11 @@ services:
 	- Microsite\Auth\Authenticator
 	- Microsite\Auth\ISignFormFactory
 	- Microsite\Domain\ContentRepository
-	- Microsite\Navigation\NavigationFactory(%siteName%)
 
 	- implement: Microsite\Domain\IContentsFormFactory
 	  parameters: [array contents]
 	  arguments: [%contents%]
+
+	- implement: Microsite\Navigation\INavigationFactory
+	  parameters: [langId]
+	  arguments: [%langId%, %siteName%]

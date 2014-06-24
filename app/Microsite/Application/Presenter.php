@@ -2,7 +2,7 @@
 
 namespace Microsite\Application;
 
-use Microsite\Navigation\NavigationFactory;
+use Microsite\Navigation\INavigationFactory;
 use Microsite\Navigation\Navigation;
 
 /**
@@ -17,14 +17,14 @@ abstract class Presenter extends \Nette\Application\UI\Presenter
 	 */
 	public $lang;
 
-	/** @var NavigationFactory */
+	/** @var INavigationFactory */
 	private $navigationFactory;
 
 
 	/**
-	 * @param NavigationFactory $navigationFactory
+	 * @param INavigationFactory $navigationFactory
 	 */
-	public function injectBase(NavigationFactory $navigationFactory)
+	public function injectBase(INavigationFactory $navigationFactory)
 	{
 		$this->navigationFactory = $navigationFactory;
 	}
