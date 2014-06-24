@@ -13,6 +13,10 @@ use Microsite\LeanMapper\Entity;
 class User extends Entity
 {
 
+	/**
+	 * @param string $password
+	 * @return bool
+	 */
 	public function matchesPassword($password)
 	{
 		return Passwords::verify($password, $this->password);
