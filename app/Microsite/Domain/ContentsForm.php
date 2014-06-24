@@ -80,7 +80,7 @@ class ContentsForm extends Control
 
 			$form->addSubmit('submit', 'Uložit změny');
 
-			$form->onSuccess[] = [$this, 'processForm'];
+			$form->onSuccess[] = $this->processForm;
 		}
 		return $form;
 	}
