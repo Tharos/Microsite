@@ -3,7 +3,7 @@
 namespace Microsite\Application;
 
 use LeanQuery\DomainQueryFactory;
-use Microsite\Domain\ContentsFormFactory;
+use Microsite\Domain\IContentsFormFactory;
 use Microsite\Domain\Page;
 
 /**
@@ -15,7 +15,7 @@ class AdminPresenter extends Presenter
 	/** @var DomainQueryFactory */
 	private $domainQueryFactory;
 
-	/** @var ContentsFormFactory */
+	/** @var IContentsFormFactory */
 	private $contentsFormFactory;
 
 	/** @var Page */
@@ -24,9 +24,9 @@ class AdminPresenter extends Presenter
 
 	/**
 	 * @param DomainQueryFactory $domainQueryFactory
-	 * @param ContentsFormFactory $contentsFormFactory
+	 * @param IContentsFormFactory $contentsFormFactory
 	 */
-	public function __construct(DomainQueryFactory $domainQueryFactory, ContentsFormFactory $contentsFormFactory)
+	public function __construct(DomainQueryFactory $domainQueryFactory, IContentsFormFactory $contentsFormFactory)
 	{
 		$this->domainQueryFactory = $domainQueryFactory;
 		$this->contentsFormFactory = $contentsFormFactory;

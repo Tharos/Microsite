@@ -27,7 +27,7 @@ class ContentsForm extends Control
 	 * @param Content[] $contents
 	 * @param ContentRepository $contentRepository
 	 */
-	public function __construct(ContentRepository $contentRepository, array $contents)
+	public function __construct(array $contents, ContentRepository $contentRepository)
 	{
 		$this->contents = $contents;
 		$this->contentRepository = $contentRepository;

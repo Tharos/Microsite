@@ -18,5 +18,8 @@ services:
 	- Microsite\Auth\Authenticator
 	- Microsite\Auth\ISignFormFactory
 	- Microsite\Domain\ContentRepository
-	- Microsite\Domain\ContentsFormFactory
 	- Microsite\Navigation\NavigationFactory(%siteName%)
+
+	- implement: Microsite\Domain\IContentsFormFactory
+	  parameters: [array contents]
+	  arguments: [%contents%]
