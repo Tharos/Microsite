@@ -23,7 +23,6 @@ class Langs
 	/**
 	 * @param DomainQueryFactory $domainQueryFactory
 	 * @param IRequest $httpRequest
-	 * @throws BadRequestException
 	 */
 	public function __construct(DomainQueryFactory $domainQueryFactory, IRequest $httpRequest)
 	{
@@ -41,10 +40,6 @@ class Langs
 				$this->currentLang = $lang;
 			}
 		}
-
-		if ($this->currentLang === null) {
-			throw new BadRequestException('Cannot determine page language.');
-		}
 	}
 
 	/**
@@ -60,10 +55,14 @@ class Langs
 	}
 
 	/**
+	 * @throws BadRequestException
 	 * @return Lang
 	 */
 	public function getCurrentLang()
 	{
+		if ($this->currentLang === null) {
+			throw new BadRequestException('Unknown language.');
+		}
 		return $this->currentLang;
 	}
 
