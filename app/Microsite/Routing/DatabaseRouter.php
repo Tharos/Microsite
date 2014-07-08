@@ -9,7 +9,6 @@ use Nette\Application\IRouter;
 use Nette\Application\Request;
 use Nette\Http\IRequest;
 use Nette\Http\Url;
-use Nette\Utils\Strings;
 
 /**
  * @author Vojtěch Kohout
