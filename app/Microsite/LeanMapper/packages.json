@@ -1,0 +1,12 @@
+{
+	"Auth" : [
+		"user"
+	],
+	"Domain": [
+		"page",
+		"content"
+	],
+	"Localisation": [
+		"lang"
+	]
+}

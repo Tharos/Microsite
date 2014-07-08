@@ -6,6 +6,7 @@ services:
 
 	- LeanMapper\DefaultEntityFactory
 	- Microsite\LeanMapper\Mapper
+	- Microsite\LeanMapper\Packages
 
 	- LeanQuery\Hydrator
 	- LeanQuery\QueryHelper

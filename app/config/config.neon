@@ -15,10 +15,6 @@ nette:
 			FILLED: "%label je vstup, který musíte vyplňit"
 
 leanMapper:
-	host: %dibi.host%
-	username: %dibi.username%
-	password: %dibi.password%
-	database: %dibi.database%
 	driver: mysqli
 
 includes:

@@ -2,8 +2,9 @@ parameters:
 
 	siteName: Microsite
 
-	dibi:
-		host: localhost
-		username: root
-		password:
-		database: microsite
+leanMapper:
+
+	host: localhost
+	username: root
+	password:
+	database: microsite

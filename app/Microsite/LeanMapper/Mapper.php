@@ -13,8 +13,19 @@ class Mapper extends DefaultMapper
 {
 
 	/** @var string */
-	protected $defaultEntityNamespace = 'Microsite\Domain';
+	protected $basePackagesNamespace = 'Microsite';
 
+	/** @var Packages */
+	private $packages;
+
+
+	/**
+	 * @param Packages $packages
+	 */
+	public function __construct(Packages $packages)
+	{
+		$this->packages = $packages;
+	}
 
 	/*
 	 * @inheritdoc
@@ -40,13 +51,7 @@ class Mapper extends DefaultMapper
 	 */
 	public function getEntityClass($table, Row $row = null)
 	{
-		if ($table === 'user') {
-			return 'Microsite\Auth\User';
-		}
-		if ($table === 'lang') {
-			return 'Microsite\Localisation\Lang';
-		}
-		return ($this->defaultEntityNamespace !== null ? $this->defaultEntityNamespace . '\\' : '') . ucfirst($table);
+		return $this->basePackagesNamespace . '\\' . $this->packages->getByTable($table) . '\\' . ucfirst($table);
 	}
 
 	/*
