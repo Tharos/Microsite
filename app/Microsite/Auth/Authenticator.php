@@ -37,7 +37,7 @@ class Authenticator implements IAuthenticator
 
 		$user = $this->domainQueryFactory->createQuery()
 			->select('u')
-			->from(User::class, 'u')
+			->from('Microsite\Auth\User', 'u') // you can use User::class instead of string in PHP 5.5
 			->where('u.username = %s', $username)
 			->getEntity();
 

@@ -3,7 +3,6 @@
 namespace Microsite\Routing;
 
 use LeanQuery\DomainQueryFactory;
-use Microsite\Domain\Page;
 use Nette\Application\IRouter;
 use Nette\Application\Request;
 use Nette\Http\IRequest;
@@ -43,7 +42,7 @@ class DatabaseRouter implements IRouter
 
 		$query = $this->domainQueryFactory->createQuery()
 			->select('p')
-			->from(Page::class, 'p')
+			->from('Microsite\Domain\Page', 'p') // you can use Page::class instead of string in PHP 5.5
 			->where('p.lang = %s', $matches[1]);
 
 		if (isset($matches[2])) {
@@ -91,7 +90,7 @@ class DatabaseRouter implements IRouter
 			}
 			$page = $this->domainQueryFactory->createQuery()
 				->select('p')
-				->from(Page::class, 'p')
+				->from('Microsite\Domain\Page', 'p') // you can use Page::class instead of string in PHP 5.5
 				->where('p.id = %i AND p.lang = %s', $params['pageId'], $params['lang'])
 				->getEntity();
 

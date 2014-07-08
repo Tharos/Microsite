@@ -30,6 +30,11 @@ In admin you can use username `admin` and password `heslo`.
 
 If you want to switch the application into a *dev* mode, please place empty file named `dev` into `/app/config` directory.
 
+Requirements
+-------
+
+Application requires PHP 5.4 or newer and MySQL 5 or newer. It is intended for running on Apache web server. 
+
 License
 -------
 

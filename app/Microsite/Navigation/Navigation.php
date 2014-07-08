@@ -145,7 +145,7 @@ class Navigation extends Control
 	{
 		return $this->domainQueryFactory->createQuery()
 			->select('p')
-			->from(Page::class, 'p')
+			->from('Microsite\Domain\Page', 'p') // you can use Page::class instead of string in PHP 5.5
 			->where('p.lang = %s', $this->langId)
 			->orderBy('p.ord')
 			->getEntities();

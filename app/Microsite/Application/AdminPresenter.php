@@ -48,7 +48,7 @@ class AdminPresenter extends Presenter
 	{
 		$this->updatedPage = $this->domainQueryFactory->createQuery()
 			->select('p')
-			->from(Page::class, 'p')
+			->from('Microsite\Domain\Page', 'p') // you can use Page::class instead of string in PHP 5.5
 			->leftJoin('p.contents', 'c')->select('c')
 			->where('p.id = %i AND p.lang = %s', $pageId, $this->lang)
 			->orderBy('c.ord')
@@ -78,7 +78,7 @@ class AdminPresenter extends Presenter
 	{
 		$this->template->pages = $this->domainQueryFactory->createQuery()
 			->select('p')
-			->from(Page::class, 'p')
+			->from('Microsite\Domain\Page', 'p') // you can use Page::class instead of string in PHP 5.5
 			->where('p.lang = %s', $this->lang)
 			->orderBy('p.ord')
 			->getEntities();
