@@ -2,6 +2,7 @@
 
 namespace Microsite\Application;
 
+use Microsite\Localisation\Lang;
 use Microsite\Navigation\INavigationFactory;
 use Microsite\Navigation\Navigation;
 
@@ -12,7 +13,7 @@ abstract class Presenter extends \Nette\Application\UI\Presenter
 {
 
 	/**
-	 * @var string
+	 * @var Lang
 	 * @persistent
 	 */
 	public $lang;
@@ -33,7 +34,7 @@ abstract class Presenter extends \Nette\Application\UI\Presenter
 	protected function beforeRender()
 	{
 		parent::beforeRender();
-		$this->template->langId = $this->lang;
+		$this->template->lang = $this->lang;
 	}
 
 	/**

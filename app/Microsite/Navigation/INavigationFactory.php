@@ -9,9 +9,9 @@ interface INavigationFactory
 {
 
 	/**
-	 * @param string $langId
+	 * @param string $lang
 	 * @return Navigation
 	 */
-	function create($langId);
+	function create($lang);
 
 } 

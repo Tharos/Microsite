@@ -4,6 +4,7 @@ namespace Microsite\Domain;
 
 use InvalidArgumentException;
 use Microsite\LeanMapper\Entity;
+use Microsite\Localisation\Lang;
 
 /**
  * @property int $id

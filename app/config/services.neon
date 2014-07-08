@@ -19,11 +19,12 @@ services:
 	- Microsite\Auth\Authenticator
 	- Microsite\Auth\ISignFormFactory
 	- Microsite\Domain\ContentRepository
+	- Microsite\Localisation\Langs
 
 	- implement: Microsite\Domain\IContentsFormFactory
 	  parameters: [array contents]
 	  arguments: [%contents%]
 
 	- implement: Microsite\Navigation\INavigationFactory
-	  parameters: [langId]
-	  arguments: [%langId%, %siteName%]
+	  parameters: [lang]
+	  arguments: [%lang%, %siteName%]

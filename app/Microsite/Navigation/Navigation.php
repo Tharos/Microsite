@@ -4,6 +4,7 @@ namespace Microsite\Navigation;
 
 use DomainException;
 use LeanQuery\DomainQueryFactory;
+use Microsite\Localisation\Lang;
 use Nette\Application\UI\Control;
 use Microsite\Domain\Page;
 
@@ -13,8 +14,8 @@ use Microsite\Domain\Page;
 class Navigation extends Control
 {
 
-	/** @var string */
-	private $langId;
+	/** @var Lang */
+	private $lang;
 
 	/** @var string */
 	private $siteName;
@@ -33,13 +34,13 @@ class Navigation extends Control
 
 
 	/**
-	 * @param string $langId
+	 * @param Lang $lang
 	 * @param string $siteName
 	 * @param DomainQueryFactory $domainQueryFactory
 	 */
-	public function __construct($langId, $siteName, DomainQueryFactory $domainQueryFactory)
+	public function __construct($lang, $siteName, DomainQueryFactory $domainQueryFactory)
 	{
-		$this->langId = $langId;
+		$this->lang = $lang;
 		$this->siteName = $siteName;
 		$this->domainQueryFactory = $domainQueryFactory;
 	}
@@ -84,7 +85,7 @@ class Navigation extends Control
 
 	public function renderHomepageLink()
 	{
-		echo $this->getPresenter()->link('Page:', ['page' => $this->getHomepage(), 'lang' => $this->langId]);
+		echo $this->getPresenter()->link('Page:', ['page' => $this->getHomepage(), 'lang' => $this->lang]);
 	}
 
 
@@ -92,7 +93,6 @@ class Navigation extends Control
 	{
 		$this->template->currentPage = $this->currentPage;
 		$this->template->pages = $this->getPages();
-		$this->template->langId = $this->langId;
 		$this->template->includeHomepage = (func_num_args() === 0 or func_get_arg(0) === true);
 
 		$this->template->render(__DIR__ . '/menu.latte');
@@ -132,7 +132,7 @@ class Navigation extends Control
 				}
 			}
 			if ($this->homepage === null) {
-				throw new DomainException("Missing homepage in $this->langId version.");
+				throw new DomainException("Missing homepage in $this->lang version.");
 			}
 		}
 		return $this->pages;
@@ -146,7 +146,7 @@ class Navigation extends Control
 		return $this->domainQueryFactory->createQuery()
 			->select('p')
 			->from('Microsite\Domain\Page', 'p') // you can use Page::class instead of string in PHP 5.5
-			->where('p.lang = %s', $this->langId)
+			->where('p.lang = %s', $this->lang->id)
 			->orderBy('p.ord')
 			->getEntities();
 	}

@@ -3,6 +3,8 @@
 namespace Microsite\Routing;
 
 use LeanQuery\DomainQueryFactory;
+use Microsite\Localisation\Lang;
+use Microsite\Localisation\Langs;
 use Nette\Application\IRouter;
 use Nette\Application\Request;
 use Nette\Http\IRequest;
@@ -18,13 +20,18 @@ class DatabaseRouter implements IRouter
 	/** @var DomainQueryFactory */
 	private $domainQueryFactory;
 
+	/** @var Langs */
+	private $langs;
+
 
 	/**
 	 * @param DomainQueryFactory $domainQueryFactory
+	 * @param Langs $langs
 	 */
-	public function __construct(DomainQueryFactory $domainQueryFactory)
+	public function __construct(DomainQueryFactory $domainQueryFactory, Langs $langs)
 	{
 		$this->domainQueryFactory = $domainQueryFactory;
+		$this->langs = $langs;
 	}
 
 	/**
@@ -33,20 +40,19 @@ class DatabaseRouter implements IRouter
 	 */
 	public function match(IRequest $httpRequest)
 	{
-		$relativeUrl = $this->getRelativeUrl($httpRequest);
+		$pageUrl = $this->getPageUrl($httpRequest);
 
-		$matches = [];
-		if (!preg_match('#^(cz|en)(?:/(.*))?$#', $relativeUrl, $matches)) {
+		if ($pageUrl === null) {
 			return null;
 		}
 
 		$query = $this->domainQueryFactory->createQuery()
 			->select('p')
 			->from('Microsite\Domain\Page', 'p') // you can use Page::class instead of string in PHP 5.5
-			->where('p.lang = %s', $matches[1]);
+			->where('p.lang = %s', $this->langs->getCurrentLang()->id);
 
-		if (isset($matches[2])) {
-			$query->where('p.webalizedName = %s', $matches[2]);
+		if ($pageUrl !== '') {
+			$query->where('p.webalizedName = %s', $pageUrl);
 		} else {
 			$query->where('p.homepage = %b', true);
 		}
@@ -56,7 +62,7 @@ class DatabaseRouter implements IRouter
 			return null;
 		}
 
-		$params = $httpRequest->getQuery() + ['action' => 'default', 'currentPage' => $page, 'lang' => $matches[1]];
+		$params = $httpRequest->getQuery() + ['action' => 'default', 'currentPage' => $page, 'lang' => $this->langs->getCurrentLang()];
 
 		return new Request(
 			'Page',
@@ -83,6 +89,10 @@ class DatabaseRouter implements IRouter
 		if (!array_key_exists('lang', $params)) {
 			return null;
 		}
+		$lang = $params['lang'];
+		if ($lang instanceof Lang) {
+			$lang = $lang->id;
+		}
 
 		if (!array_key_exists('page', $params)) {
 			if (!array_key_exists('pageId', $params)) {
@@ -91,7 +101,7 @@ class DatabaseRouter implements IRouter
 			$page = $this->domainQueryFactory->createQuery()
 				->select('p')
 				->from('Microsite\Domain\Page', 'p') // you can use Page::class instead of string in PHP 5.5
-				->where('p.id = %i AND p.lang = %s', $params['pageId'], $params['lang'])
+				->where('p.id = %i AND p.lang = %s', $params['pageId'], $lang)
 				->getEntity();
 
 			if ($page === null) {
@@ -100,7 +110,7 @@ class DatabaseRouter implements IRouter
 		} else {
 			$page = $params['page'];
 		}
-		$relativeUrl = $params['lang'] . ($page->homepage ? '' : '/' . $page->webalizedName);
+		$relativeUrl = $lang . ($page->homepage ? '' : '/' . $page->webalizedName);
 
 		unset($params['pageId'], $params['action'], $params['lang']);
 
@@ -121,14 +131,20 @@ class DatabaseRouter implements IRouter
 	 * @param IRequest $httpRequest
 	 * @return string
 	 */
-	private function getRelativeUrl(IRequest $httpRequest)
+	private function getPageUrl(IRequest $httpRequest)
 	{
-		$relativeUrl = $httpRequest->getUrl()->getRelativeUrl();
-		$position = strpos($relativeUrl, '?');
-		if ($position !== false) {
-			$relativeUrl = Strings::truncate($relativeUrl, $position, '');
+		$matches = [];
+		$pattern = sprintf('~
+			^%s # current lang
+			(?:/([^?]+))? # page URL
+			(?:\?.*)?$ # query string
+		~x', $this->langs->getCurrentLang());
+
+		if (!preg_match($pattern, $httpRequest->getUrl()->getRelativeUrl(), $matches)) {
+			return null;
 		}
-		return $relativeUrl;
+
+		return !empty($matches[1]) ? $matches[1] : '';
 	}
 
 }

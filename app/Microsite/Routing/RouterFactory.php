@@ -2,6 +2,8 @@
 
 namespace Microsite\Routing;
 
+use Microsite\Localisation\Lang;
+use Microsite\Localisation\Langs;
 use Nette\Application\IRouter;
 use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
@@ -15,13 +17,18 @@ class RouterFactory
 	/** @var IDatabaseRouterFactory */
 	private $databaseRouterFactory;
 
+	/** @var Langs */
+	private $langs;
+
 
 	/**
 	 * @param IDatabaseRouterFactory $databaseRouterFactory
+	 * @param Langs $langs
 	 */
-	public function __construct(IDatabaseRouterFactory $databaseRouterFactory)
+	public function __construct(IDatabaseRouterFactory $databaseRouterFactory, Langs $langs)
 	{
 		$this->databaseRouterFactory = $databaseRouterFactory;
+		$this->langs = $langs;
 	}
 
 	/**
@@ -31,7 +38,16 @@ class RouterFactory
 	{
 		$router = new RouteList;
 
-		$router[] = new Route('<lang cz|en>/<presenter admin|sign>[/<action=default>[/<id>]]');
+		$router[] = new Route('<lang>/<presenter admin|sign>[/<action=default>[/<id>]]', [
+			'lang' => [
+				Route::FILTER_IN => function ($langId) {
+					return $this->langs->getLang($langId);
+				},
+				Route::FILTER_OUT => function ($lang) {
+					return $lang instanceof Lang ? $lang->id : $lang;
+				}
+			]
+		]);
 		$router[] = $this->databaseRouterFactory->create();
 
 		return $router;

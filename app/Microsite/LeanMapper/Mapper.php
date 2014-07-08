@@ -43,6 +43,9 @@ class Mapper extends DefaultMapper
 		if ($table === 'user') {
 			return 'Microsite\Auth\User';
 		}
+		if ($table === 'lang') {
+			return 'Microsite\Localisation\Lang';
+		}
 		return ($this->defaultEntityNamespace !== null ? $this->defaultEntityNamespace . '\\' : '') . ucfirst($table);
 	}
 
