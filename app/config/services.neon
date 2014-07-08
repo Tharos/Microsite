@@ -19,10 +19,10 @@ services:
 
 	- Microsite\Auth\Authenticator
 	- Microsite\Auth\ISignFormFactory
-	- Microsite\Domain\ContentRepository
+	- Microsite\Site\ContentRepository
 	- Microsite\Localisation\Langs
 
-	- implement: Microsite\Domain\IContentsFormFactory
+	- implement: Microsite\Site\IContentsFormFactory
 	  parameters: [array contents]
 	  arguments: [%contents%]
 

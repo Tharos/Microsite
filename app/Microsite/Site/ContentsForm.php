@@ -1,6 +1,6 @@
 <?php
 
-namespace Microsite\Domain;
+namespace Microsite\Site;
 
 use Exception;
 use Nette\Application\AbortException;

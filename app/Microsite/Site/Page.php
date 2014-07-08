@@ -1,6 +1,6 @@
 <?php
 
-namespace Microsite\Domain;
+namespace Microsite\Site;
 
 use InvalidArgumentException;
 use Microsite\LeanMapper\Entity;

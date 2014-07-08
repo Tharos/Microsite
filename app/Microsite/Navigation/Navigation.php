@@ -6,7 +6,7 @@ use DomainException;
 use LeanQuery\DomainQueryFactory;
 use Microsite\Localisation\Lang;
 use Nette\Application\UI\Control;
-use Microsite\Domain\Page;
+use Microsite\Site\Page;
 
 /**
  * @author Vojtěch Kohout
@@ -145,7 +145,7 @@ class Navigation extends Control
 	{
 		return $this->domainQueryFactory->createQuery()
 			->select('p')
-			->from('Microsite\Domain\Page', 'p') // you can use Page::class instead of string in PHP 5.5
+			->from('Microsite\Site\Page', 'p') // you can use Page::class instead of string in PHP 5.5
 			->where('p.lang = %s', $this->lang->id)
 			->orderBy('p.ord')
 			->getEntities();

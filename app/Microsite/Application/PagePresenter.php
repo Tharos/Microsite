@@ -2,7 +2,7 @@
 
 namespace Microsite\Application;
 
-use Microsite\Domain\Page;
+use Microsite\Site\Page;
 use Microsite\Navigation\Navigation;
 
 /**

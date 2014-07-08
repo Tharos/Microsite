@@ -47,7 +47,7 @@ class DatabaseRouter implements IRouter
 
 		$query = $this->domainQueryFactory->createQuery()
 			->select('p')
-			->from('Microsite\Domain\Page', 'p') // you can use Page::class instead of string in PHP 5.5
+			->from('Microsite\Site\Page', 'p') // you can use Page::class instead of string in PHP 5.5
 			->where('p.lang = %s', $this->langs->getCurrentLang()->id);
 
 		if ($pageUrl !== '') {
@@ -99,7 +99,7 @@ class DatabaseRouter implements IRouter
 			}
 			$page = $this->domainQueryFactory->createQuery()
 				->select('p')
-				->from('Microsite\Domain\Page', 'p') // you can use Page::class instead of string in PHP 5.5
+				->from('Microsite\Site\Page', 'p') // you can use Page::class instead of string in PHP 5.5
 				->where('p.id = %i AND p.lang = %s', $params['pageId'], $lang)
 				->getEntity();
 

@@ -2,7 +2,7 @@
 	"Auth" : [
 		"user"
 	],
-	"Domain": [
+	"Site": [
 		"page",
 		"content"
 	],
