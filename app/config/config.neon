@@ -12,7 +12,7 @@ nette:
 
 	forms:
 		messages:
-			FILLED: "%label je vstup, který musíte vyplňit"
+			FILLED: "%label je vstup, který musíte vyplnit"
 
 leanMapper:
 	driver: mysqli
